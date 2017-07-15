@@ -1,0 +1,25 @@
+{
+    "name": "tiayo/command",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zxj",
+            "email": "656861622@qq.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/database": "^5.4",
+        "illuminate/events": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Command\\": "app/"
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+    }
+}
