@@ -1,6 +1,7 @@
 <?php
 
-namespace Command\Console;
+use Command\Console\PrintColor;
+use Command\Console\Command;
 
 class Handlers
 {

@@ -9,8 +9,6 @@
  *
  */
 
-error_reporting(E_ALL^E_NOTICE^E_WARNING);
-
 if (PHP_SAPI !== "cli") {
     return http_response_code(404);
 }
@@ -23,7 +21,7 @@ require_once __DIR__.'/config/db.php';
 require_once 'app/Console/Handlers.php';
 
 //开始执行
-$handle = new \Command\Console\Handlers();
+$handle = app(Handlers::class);
 
 print_r($handle->boot($argv)."\r\n");
 

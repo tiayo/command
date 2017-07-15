@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-$config = include(dirname(__DIR__).'/../Application/Common/Conf/config.php');
+$config = @include(dirname(__DIR__).'/../Application/Common/Conf/config.php');
 
 $capsule = new Capsule;
 
