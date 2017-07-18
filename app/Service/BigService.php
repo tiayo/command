@@ -29,17 +29,25 @@ class BigService
     protected $up;
     protected $ib_children;
 
-    public function __construct()
+    public function __construct(Account $account,
+                                AccountChildren $account_children,
+                                IbRulesRelation $ib_rules_relation,
+                                IbRulesMt4group $ib_rules_mt4group,
+                                IbSymbolgroupDetail $ib_symbolgroup_detail,
+                                IbRulesSymbolgroupDetail $ib_rules_symbolgroup_detail,
+                                PublicService $public,
+                                UpService $up,
+                                IbChildren $ib_children)
     {
-        $this->account = app(Account::class);
-        $this->account_children = app(AccountChildren::class);
-        $this->ib_rules_relation = app(IbRulesRelation::class);
-        $this->ib_rules_mt4group = app(IbRulesMt4group::class);
-        $this->ib_symbolgroup_detail = app(IbSymbolgroupDetail::class);
-        $this->ib_rules_symbolgroup_detail = app(IbRulesSymbolgroupDetail::class);
-        $this->public = app(PublicService::class);
-        $this->up = app(UpService::class);
-        $this->ib_children = app(IbChildren::class);
+        $this->account = $account;
+        $this->account_children = $account_children;
+        $this->ib_rules_relation = $ib_rules_relation;
+        $this->ib_rules_mt4group = $ib_rules_mt4group;
+        $this->ib_symbolgroup_detail = $ib_symbolgroup_detail;
+        $this->ib_rules_symbolgroup_detail = $ib_rules_symbolgroup_detail;
+        $this->public = $public;
+        $this->up = $up;
+        $this->ib_children = $ib_children;
     }
 
     /**

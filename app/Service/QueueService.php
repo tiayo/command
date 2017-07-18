@@ -12,12 +12,12 @@ class QueueService
     protected $many;
     protected $big;
 
-    public function __construct()
+    public function __construct(PrintColor $color, IbOrders $ib_orders, ManyService $many, BigService $big)
     {
-        $this->color = app(PrintColor::class);
-        $this->ib_orders = app(IbOrders::class);
-        $this->many = app(ManyService::class);
-        $this->big = app(BigService::class);
+        $this->color = $color;
+        $this->ib_orders = $ib_orders;
+        $this->many = $many;
+        $this->big = $big;
     }
 
     public function queue($array)
@@ -36,6 +36,8 @@ class QueueService
 
             usleep($usleep);
         }
+
+        return true;
     }
 
     public function loop($all)

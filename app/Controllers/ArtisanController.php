@@ -8,9 +8,9 @@ class ArtisanController extends Controller
 {
     protected $queue;
 
-    public function __construct()
+    public function __construct(QueueService $queue)
     {
-        $this->queue = app(QueueService::class);
+        $this->queue = $queue;
     }
 
     public function queue($array)

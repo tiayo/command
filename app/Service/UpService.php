@@ -7,29 +7,18 @@ use Command\Model\IbLevelValues;
 
 class UpService
 {
-    protected $color;
-    protected $account;
-    protected $ib_orders;
-    protected $ib_deposit;
-    protected $account_children;
     protected $ib;
-    protected $ib_rules_relation;
-    protected $ib_rules;
-    protected $ib_rules_mt4group;
-    protected $ib_symbolgroup_detail;
-    protected $ib_rules_symbolgroup_detail;
-    protected $ib_group_rules;
     protected $ib_level_values;
     protected $public;
 
-    public function __construct()
+    public function __construct(Ib $ib, IbLevelValues $ib_level_values, PublicService $public)
     {
-        $this->ib = app(Ib::class);
-        $this->ib_level_values = app(IbLevelValues::class);
-        $this->public = app(PublicService::class);
+        $this->ib = $ib;
+        $this->ib_level_values = $ib_level_values;
+        $this->public = $public;
     }
 
-    public function up($value, $ib_id, $item, $origin_money, $aid, $account_children, $account)
+    public function up($value, $ib_id, $item, $aid, $account_children, $account)
     {
         $ib_id = $this->public->ib_id($ib_id);
 
@@ -51,7 +40,7 @@ class UpService
 
         if (empty($rule_value)) {
             if ($item['level'] == 0) {
-                $this->up($value, $ib_id, $item, 0, $aid, $account_children, $account);
+                $this->up($value, $ib_id, $item, $aid, $account_children, $account);
             }
         } else {
             $money = $this->public->money($rule_value, $value, $item);
@@ -62,7 +51,7 @@ class UpService
                 $this->public->create($value, $ib, $aid, $account_children, $ib_id, $item, $money, $account);
             }
 
-            $this->up($value, $ib_id, $item, $money, $aid, $account_children, $account);
+            $this->up($value, $ib_id, $item, $aid, $account_children, $account);
         }
     }
 

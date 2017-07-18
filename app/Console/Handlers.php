@@ -8,10 +8,10 @@ class Handlers
     protected $print_color;
     protected $command;
 
-    public function __construct()
+    public function __construct(PrintColor $printColor, command $command)
     {
-        $this->print_color = app(PrintColor::class);
-        $this->command = app(Command::class);
+        $this->print_color = $printColor;
+        $this->command = $command;
     }
 
     public function boot($argv)

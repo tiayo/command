@@ -10,10 +10,10 @@ class PublicService
     protected $ib;
     protected $ib_children;
 
-    public function __construct()
+    public function __construct(Ib $ib, IbChildren $ib_children)
     {
-        $this->ib = app(Ib::class);
-        $this->ib_children = app(IbChildren::class);
+        $this->ib = $ib;
+        $this->ib_children = $ib_children;
     }
 
     public function money($rule_value, $value, $item)
