@@ -16,14 +16,14 @@ class Handlers
 
     public function boot($argv)
     {
-        $function  = $argv[1];
+        $function = $argv[1];
         $array = $this->getKey($argv);
 
         //判断方法是否存在
         if (method_exists($this->command, $function)) {
             return $this->command->$function($array);
         } else {
-            return $this->print_color->getColoredString($function.'方法未定义！', "white", "red");
+            return $this->print_color->getColoredString($function . '方法未定义！', "white", "red");
         }
 
     }

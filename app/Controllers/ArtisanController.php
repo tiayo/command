@@ -2,25 +2,20 @@
 
 namespace Command\Controllers;
 
+use Command\Service\QueueService;
+
 class ArtisanController extends Controller
 {
-    protected $account;
+    protected $queue;
 
     public function __construct()
     {
-        $this->account = app('Command\Model\Account');
+        $this->queue = app(QueueService::class);
     }
 
     public function queue($array)
     {
-        $email = $array['email'] ? : null;
-
-        $user = $this->account
-            ->where('email', $email)
-            ->first();
-
-       return $user['password'];
+        return $this->queue->queue($array);
     }
-
 
 }
