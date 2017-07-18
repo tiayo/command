@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Container\Container;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Events\Dispatcher;
 
 $config = @include dirname(__DIR__).'/../Application/Common/Conf/config.php';
 
@@ -18,9 +20,6 @@ $capsule->addConnection([
 ]);
 
 // Set the event dispatcher used by Eloquent models... (optional)
-use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Events\Dispatcher;
-
 $capsule->setEventDispatcher(new Dispatcher(new Container()));
 
 // Make this Capsule instance available globally via static methods... (optional)
