@@ -3,7 +3,7 @@
 namespace Command\Service;
 
 use Command\Model\Ib;
-use Command\Model\IbChildren;;
+use Command\Model\IbChildren;
 
 class PublicService
 {
@@ -20,7 +20,7 @@ class PublicService
     {
         if ($item['way'] = '$') {
             $item = $rule_value * $value['volume'];
-        } else if ($item['way'] = '%') {
+        } elseif ($item['way'] = '%') {
             $item = $rule_value * $value['volume'] * 0.01;
         }
 
@@ -37,7 +37,7 @@ class PublicService
         $map['to_account'] = $ib->mt4;
         $map['to_name'] = $ib->name;
         $map['to_aid'] = $ib_id;
-        $map['money'] = sprintf("%.2f", $money);
+        $map['money'] = sprintf('%.2f', $money);
         $map['volume'] = $value['volume'];
         $map['create_at'] = $value['close_time'];
         $map['rid'] = $item['rules_id'];
@@ -57,27 +57,27 @@ class PublicService
 
     public function remark($item, $account, $value)
     {
-        return '记录返佣规则(id|名字|用户组号|品种|MT4组|结算方式)为:'.$item['rules_id'].'|'.$item['title'].'|'.$item['usergroup'].'|'.$item['symbolgroup'].'|'.$item['mt4group'].'|'.$item['way'].';记录交易账户(用户组号|品种|MT4组)为:'.(string)$account->user_type.'|'.$value['symbol'].'|'.$value['mt4group'].'';
+        return '记录返佣规则(id|名字|用户组号|品种|MT4组|结算方式)为:'.$item['rules_id'].'|'.$item['title'].'|'.$item['usergroup'].'|'.$item['symbolgroup'].'|'.$item['mt4group'].'|'.$item['way'].';记录交易账户(用户组号|品种|MT4组)为:'.(string) $account->user_type.'|'.$value['symbol'].'|'.$value['mt4group'].'';
     }
 
     /**
-     * 获得用户上一级代理
+     * 获得用户上一级代理.
      *
      * @param $ib_id
+     *
      * @return int
      */
     public function ib_id($ib_id)
     {
-         $info = $this->ib_children
+        $info = $this->ib_children
             ->select('ib_id')
             ->where('aid', $ib_id)
             ->first();
 
-         if (empty($info->ib_id)) {
-             return 0;
-         }
+        if (empty($info->ib_id)) {
+            return 0;
+        }
 
-         return $info->ib_id;
-
+        return $info->ib_id;
     }
 }

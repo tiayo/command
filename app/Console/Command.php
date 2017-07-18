@@ -12,6 +12,7 @@ class Command
     {
         $this->artisan = app(ArtisanController::class);
     }
+
     public function queue($argv)
     {
         return $this->artisan->queue($argv);

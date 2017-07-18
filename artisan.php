@@ -1,20 +1,18 @@
 <?php
 
 /**
- * 命令行模式入口文件
+ * 命令行模式入口文件.
  *
  * composer自动加载
  *
  * illuminate/database数据库扩展
- *
  */
-
-if (PHP_SAPI !== "cli") {
+if (PHP_SAPI !== 'cli') {
     return http_response_code(404);
 }
 
 //设置时区
-ini_set('date.timezone','Asia/Shanghai');
+ini_set('date.timezone', 'Asia/Shanghai');
 
 //引入入口文件
 require __DIR__.'/vendor/autoload.php';

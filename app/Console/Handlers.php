@@ -1,7 +1,7 @@
 <?php
 
-use Command\Console\PrintColor;
 use Command\Console\Command;
+use Command\Console\PrintColor;
 
 class Handlers
 {
@@ -23,16 +23,15 @@ class Handlers
         if (method_exists($this->command, $function)) {
             return $this->command->$function($array);
         } else {
-            return $this->print_color->getColoredString($function . '方法未定义！', "white", "red");
+            return $this->print_color->getColoredString($function.'方法未定义！', 'white', 'red');
         }
-
     }
 
     public function getKey($argv)
     {
         $result = [];
 
-        foreach($argv as $key => $value) {
+        foreach ($argv as $key => $value) {
             if ($this->filter($value)) {
                 $value = substr_replace($value, '', 0, 1);
                 $result[$value] = $this->filter($argv[$key + 1]) ? null : $argv[$key + 1];
