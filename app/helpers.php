@@ -46,6 +46,6 @@ if (!function_exists('write_log')) {
      */
     function write_log($data, $type = 'INFO')
     {
-       Log::log($type, $data);
+        Log::log($type, $data);
     }
 }
