@@ -12,19 +12,12 @@ use Command\Model\IbSymbolgroupDetail;
 
 class BigService
 {
-    protected $color;
     protected $account;
-    protected $ib_orders;
-    protected $ib_deposit;
     protected $account_children;
-    protected $ib;
     protected $ib_rules_relation;
-    protected $ib_rules;
     protected $ib_rules_mt4group;
     protected $ib_symbolgroup_detail;
     protected $ib_rules_symbolgroup_detail;
-    protected $ib_group_rules;
-    protected $ib_level_values;
     protected $public;
     protected $up;
     protected $ib_children;
