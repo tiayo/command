@@ -17,5 +17,4 @@ class ArtisanController extends Controller
     {
         return $this->queue->queue($array);
     }
-
 }

@@ -11,7 +11,6 @@ use Command\Model\IbSymbolgroupDetail;
 
 class ManyService
 {
-
     protected $color;
     protected $account;
     protected $ib_orders;
@@ -41,7 +40,7 @@ class ManyService
     }
 
     /**
-     * 执行策略
+     * 执行策略.
      *
      * @param $value //订单信息
      */
@@ -61,7 +60,7 @@ class ManyService
     }
 
     /**
-     * 策略主体
+     * 策略主体.
      *
      * @param $cur
      * @param $value
@@ -69,6 +68,7 @@ class ManyService
      * @param $ib_id
      * @param $aid
      * @param $account_children
+     *
      * @return bool
      */
     public function loop($cur, $value, $account, $ib_id, $aid, $account_children)
@@ -83,7 +83,7 @@ class ManyService
 
             $symbolgroupcount = $this->symbolgroupcount($value, $item);
 
-            if ($mt4groupcount <= 0 || $symbolgroupcount <= 0 || strpos($item['usergroup'], (string)$account->user_type) < 0) {
+            if ($mt4groupcount <= 0 || $symbolgroupcount <= 0 || strpos($item['usergroup'], (string) $account->user_type) < 0) {
                 continue;
             }
 
@@ -110,9 +110,10 @@ class ManyService
     }
 
     /**
-     * 获取返佣规则
+     * 获取返佣规则.
      *
      * @param $ib_id //上级代理id
+     *
      * @return mixed
      */
     public function cur($ib_id)
@@ -126,10 +127,11 @@ class ManyService
     }
 
     /**
-     * mt4分组数量
+     * mt4分组数量.
      *
      * @param $value
      * @param $item
+     *
      * @return mixed
      */
     public function mt4groupcount($value, $item)
@@ -141,10 +143,11 @@ class ManyService
     }
 
     /**
-     * 品种组数量
+     * 品种组数量.
      *
      * @param $value
      * @param $item
+     *
      * @return mixed
      */
     public function symbolgroupcount($value, $item)
@@ -168,10 +171,11 @@ class ManyService
 
     /**
      * 获取mt4分组
-     * 返回用','分割打字符串
+     * 返回用','分割打字符串.
      *
      * @param $value
      * @param $item
+     *
      * @return string
      */
     public function mt4group($value, $item)
@@ -192,10 +196,11 @@ class ManyService
 
     /**
      * 获取品种组
-     * 返回用','分割打字符串
+     * 返回用','分割打字符串.
      *
      * @param $value
      * @param $item
+     *
      * @return string
      */
     public function symbolgroup($value, $item)

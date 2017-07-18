@@ -4,15 +4,14 @@ namespace Command\Service;
 
 use Command\Model\Account;
 use Command\Model\AccountChildren;
+use Command\Model\IbChildren;
 use Command\Model\IbRulesMt4group;
 use Command\Model\IbRulesRelation;
 use Command\Model\IbRulesSymbolgroupDetail;
 use Command\Model\IbSymbolgroupDetail;
-use Command\Model\IbChildren;;
 
 class BigService
 {
-
     protected $color;
     protected $account;
     protected $ib_orders;
@@ -44,7 +43,7 @@ class BigService
     }
 
     /**
-     * 执行策略
+     * 执行策略.
      *
      * @param $value //订单信息
      */
@@ -59,7 +58,6 @@ class BigService
         $loop_aid = $aid;
 
         while (($ib_id = $this->public->ib_id($loop_aid)) > 0) {
-
             $cur = $this->cur($ib_id);
 
             $this->loop($cur, $value, $account, $ib_id, $loop_aid, $account_children);
@@ -71,7 +69,7 @@ class BigService
     }
 
     /**
-     * 策略主体
+     * 策略主体.
      *
      * @param $cur
      * @param $value
@@ -79,6 +77,7 @@ class BigService
      * @param $ib_id
      * @param $aid
      * @param $account_children
+     *
      * @return bool
      */
     public function loop($cur, $value, $account, $ib_id, $aid, $account_children)
@@ -93,7 +92,7 @@ class BigService
 
             $symbolgroupcount = $this->symbolgroupcount($value, $item);
 
-            if ($mt4groupcount <= 0 || $symbolgroupcount <= 0 || strpos($item['usergroup'], (string)$account->user_type) < 0) {
+            if ($mt4groupcount <= 0 || $symbolgroupcount <= 0 || strpos($item['usergroup'], (string) $account->user_type) < 0) {
                 continue;
             }
 
@@ -119,9 +118,10 @@ class BigService
     }
 
     /**
-     * 下级需要扣掉打钱
+     * 下级需要扣掉打钱.
      *
      * @param $item
+     *
      * @return int
      */
     public function sub_value($item, $aid)
@@ -141,9 +141,10 @@ class BigService
     }
 
     /**
-     * 获取返佣规则
+     * 获取返佣规则.
      *
      * @param $ib_id //上级代理id
+     *
      * @return mixed
      */
     public function cur($ib_id)
@@ -157,10 +158,11 @@ class BigService
     }
 
     /**
-     * mt4分组数量
+     * mt4分组数量.
      *
      * @param $value
      * @param $item
+     *
      * @return mixed
      */
     public function mt4groupcount($value, $item)
@@ -172,10 +174,11 @@ class BigService
     }
 
     /**
-     * 品种组数量
+     * 品种组数量.
      *
      * @param $value
      * @param $item
+     *
      * @return mixed
      */
     public function symbolgroupcount($value, $item)
@@ -199,10 +202,11 @@ class BigService
 
     /**
      * 获取mt4分组
-     * 返回用','分割打字符串
+     * 返回用','分割打字符串.
      *
      * @param $value
      * @param $item
+     *
      * @return string
      */
     public function mt4group($value, $item)
@@ -223,10 +227,11 @@ class BigService
 
     /**
      * 获取品种组
-     * 返回用','分割打字符串
+     * 返回用','分割打字符串.
      *
      * @param $value
      * @param $item
+     *
      * @return string
      */
     public function symbolgroup($value, $item)

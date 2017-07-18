@@ -5,7 +5,6 @@ namespace Command\Service;
 use Command\Model\Ib;
 use Command\Model\IbLevelValues;
 
-
 class UpService
 {
     protected $color;
@@ -55,12 +54,11 @@ class UpService
                 $this->up($value, $ib_id, $item, 0, $aid, $account_children, $account);
             }
         } else {
-
             $money = $this->public->money($rule_value, $value, $item);
 
             $ib = $this->public->ib($ib_id);
 
-            if($money > 0) {
+            if ($money > 0) {
                 $this->public->create($value, $ib, $aid, $account_children, $ib_id, $item, $money, $account);
             }
 
@@ -78,5 +76,4 @@ class UpService
             ->first()
             ->value;
     }
-
 }
