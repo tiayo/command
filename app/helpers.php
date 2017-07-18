@@ -1,6 +1,7 @@
 <?php
 
 use \Command\Container\Container;
+use \Command\Log\Log;
 
 if (!function_exists('app')) {
     /**
@@ -45,22 +46,6 @@ if (!function_exists('write_log')) {
      */
     function write_log($data, $type = 'INFO')
     {
-        $file = dirname(__DIR__).'/Log/'.date('ymd').'.log';
-
-        if (is_array($data) || is_object($data)) {
-            $data = var_export($data, true);
-        } elseif (!is_string($data) || !is_numeric($data)) {
-            $data = var_export($data, true);
-        }
-
-        //加上前缀
-        $data = "\r\n".$type.':['.date('Y-m-d H:i:s')."]\r\n".$data;
-
-        //写入
-        $log = fopen($file, 'a');
-
-        fwrite($log, $data);
-
-        fclose($log);
+       Log::log($type, $data);
     }
 }
